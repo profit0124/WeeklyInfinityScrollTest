@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct NumberView: View {
+    @Binding var numbers: [Int]
+    let frameWidt: CGFloat = UIScreen.main
+        .bounds.width * 0.13
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack(spacing: 0) {
+            ForEach(0..<numbers.count, id: \.self) { i in
+                ZStack {
+                    Text("\(numbers[i])")
+                }
+                .frame(width: frameWidt)
+            }
+        }
     }
 }
 
-struct NumberView_Previews: PreviewProvider {
-    static var previews: some View {
-        NumberView()
-    }
-}
